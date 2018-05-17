@@ -20,10 +20,14 @@ while display.isNotDone():
     faces = img.findHaarFeatures("facetrack-training.xml") # Load in trained face file
     if faces:
       faces.draw()
-      faces[-1].crop().save(result + ".jpg")
-            
-    data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
-    r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data)
+      faces[-1].crop().save(result + ".jpg")    
+      data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
+      
+      with open(result + '.jpg', 'rb') as f:
+        r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data, files={result + '.jpg': f})
+    else:    
+      data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
+      r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data)
   img.save(display)  # Shows the image on the screen
 # This is the tutorial: https://technoobsite.wordpress.com/2016/02/02/raspberry-pi-barcode-scanner/
 # Face recognition derived from https://gist.github.com/rishimukherjee/2220293

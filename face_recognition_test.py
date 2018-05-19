@@ -25,9 +25,11 @@ while display.isNotDone():
       
       with open(result + '.jpg', 'rb') as f:
         r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data, files={result + '.jpg': f})
+        print r.text
     else:    
       data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
       r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data)
+      print r.text
   img.save(display)  # Shows the image on the screen
 # This is the tutorial: https://technoobsite.wordpress.com/2016/02/02/raspberry-pi-barcode-scanner/
 # Face recognition derived from https://gist.github.com/rishimukherjee/2220293

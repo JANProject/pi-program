@@ -19,5 +19,6 @@ while display.isNotDone():
 
     data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
     r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data)
+    print r.text
   img.save(display)  # Shows the image on the screen
 # This is the tutorial: https://technoobsite.wordpress.com/2016/02/02/raspberry-pi-barcode-scanner/

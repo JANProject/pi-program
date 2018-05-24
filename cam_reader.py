@@ -18,7 +18,7 @@ while display.isNotDone():
     barcode = []  # Reset barcode data to empty set
 
     data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
-    r = requests.post('https://ep-web-interface-js0mmer.c9users.io/api/post.php', data=data)
+    r = requests.post('https://lavatory-logger-js0mmer.c9users.io/post', data=data)
     print r.text
   img.save(display)  # Shows the image on the screen
 # This is the tutorial: https://technoobsite.wordpress.com/2016/02/02/raspberry-pi-barcode-scanner/

@@ -2,6 +2,9 @@ from SimpleCV import Color,Camera,Display
 import requests
 import datetime
 
+# Put the name of the bathroom
+bathroom = "J2"
+
 cam = Camera()  # Starts the camera
 display = Display() 
 
@@ -17,7 +20,7 @@ while display.isNotDone():
     time = now.hour * 60 + now.minute;
     barcode = []  # Reset barcode data to empty set
 
-    data = {'id': result, 'date': date, 'time': time, 'password': 'password'}
+    data = {'id': result, 'date': date, 'time': time, bathroom: bathroom, 'password': 'password'}
     r = requests.post('https://lavatory-logger-js0mmer.c9users.io/post', data=data)
     print r.text
   img.save(display)  # Shows the image on the screen
